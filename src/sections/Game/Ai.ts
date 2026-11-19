@@ -1,7 +1,7 @@
 import { atom } from "nanostores";
 
 export const GRID_LENGTH = 9;
-export const MAX_MOVES = 10;
+export const MAX_MOVES = 9;
 
 export const GAME_STATE = {
   PLAYER_TURN: "player_turn",
@@ -264,16 +264,14 @@ function aiCanBlockFork(grid: any, moveCount: number) {
       grid[convertCordToIndex(1, 1)] === SPACE_STATE.AI &&
       grid[convertCordToIndex(2, 2)] === SPACE_STATE.PLAYER
     ) {
-      aiCanFillEmptySide(grid);
-      return true;
+      return aiCanFillEmptySide(grid);
     }
     if (
       grid[convertCordToIndex(2, 0)] === SPACE_STATE.PLAYER &&
       grid[convertCordToIndex(1, 1)] === SPACE_STATE.AI &&
       grid[convertCordToIndex(0, 2)] === SPACE_STATE.PLAYER
     ) {
-      aiCanFillEmptySide(grid);
-      return true;
+      return aiCanFillEmptySide(grid);
     }
     if (
       grid[convertCordToIndex(2, 1)] === SPACE_STATE.PLAYER &&
@@ -445,13 +443,6 @@ export const checkWinner = (grid: any, moveCount: number) => {
     [2, 4, 6],
   ];
 
-  if (isDraw(moveCount)) {
-    return {
-      winner: GAME_STATE.DRAW,
-      winSpaces: [],
-    };
-  }
-
   for (let i = 0; i < winnerSpaces.length; i++) {
     const [a, b, c] = winnerSpaces[i];
 
@@ -479,6 +470,13 @@ export const checkWinner = (grid: any, moveCount: number) => {
     }
   }
 
+  if (isDraw(moveCount)) {
+    return {
+      winner: GAME_STATE.DRAW,
+      winSpaces: [],
+    };
+  }
+
   return null;
 };
 
@@ -489,8 +487,8 @@ export const handlePlayerClick = (gridIndex: number) => {
 
   if (grid.get()[gridIndex] === SPACE_STATE.EMPTY) {
     fillGridSpace(gridIndex, SPACE_STATE.PLAYER);
-    gameState.set(GAME_STATE.AI_TURN);
     moveCount.set(moveCount.get() + 1);
+    gameState.set(GAME_STATE.AI_TURN);
   }
 };
 

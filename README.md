@@ -12,14 +12,14 @@ Design heavily inspired by [Brittany Chiang's portfolio](https://brittanychiang.
 
 - [Astro](https://astro.build/) — static site framework
 - [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/) + [Sass](https://sass-lang.com/)
+- [Tailwind CSS v4](https://tailwindcss.com/) (theme lives in `src/css/global.css`)
 - [DatoCMS](https://datocms.com/) — headless CMS (content source, queried via GraphQL)
 - [PostHog](https://posthog.com/) — product analytics
 - [Motion](https://motion.dev/) — animation library
 
 ## Getting started
 
-Requires **Node.js 22.x** (see `.nvmrc`) and [pnpm](https://pnpm.io/).
+Requires **Node.js 22.x, 22.23.4 or newer** (see `.nvmrc`) and [pnpm](https://pnpm.io/).
 
 ```sh
 # 1. install pnpm if you don't have it
@@ -56,6 +56,7 @@ All commands are run from the project root:
 | `pnpm dev`     | Start the local dev server at `localhost:4321` |
 | `pnpm build`   | Build the production site to `./dist/`         |
 | `pnpm preview` | Preview the production build locally           |
+| `pnpm test`    | Check the 404 tic-tac-toe AI can't be beaten   |
 | `pnpm astro …` | Run Astro CLI commands (`astro check`, etc.)   |
 
 ## Project structure
@@ -65,7 +66,7 @@ public/            static assets (fonts, favicons, OG images, robots.txt)
 src/
 ├── assets/        images processed by Astro
 ├── components/    reusable UI (Project, Job, Blog, Posthog, Beams)
-├── css/           global styles and Sass partials
+├── css/           global styles + Tailwind theme
 ├── icons/         inline SVG icon components
 ├── layouts/       Layout.astro — the shared HTML shell + <head> metadata
 ├── pages/         routes — index.astro (home) and 404.astro
