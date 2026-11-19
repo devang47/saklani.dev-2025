@@ -1,4 +1,76 @@
-@use "game";
+@import 'tailwindcss';
+
+@theme {
+  --color-scooter-50: #effbfc;
+  --color-scooter-100: #d6f5f7;
+  --color-scooter-200: #b2eaef;
+  --color-scooter-300: #7ddae3;
+  --color-scooter-400: #41c0cf;
+  --color-scooter-500: #2ab7ca;
+  --color-scooter-600: #228498;
+  --color-scooter-700: #226b7c;
+  --color-scooter-800: #245866;
+  --color-scooter-900: #224a57;
+  --color-scooter-950: #11303b;
+  --color-mantis-50: #f2fbf3;
+  --color-mantis-100: #e0f8e2;
+  --color-mantis-200: #c2f0c6;
+  --color-mantis-300: #93e29c;
+  --color-mantis-400: #5ccc68;
+  --color-mantis-500: #3bc14a;
+  --color-mantis-600: #279234;
+  --color-mantis-700: #22732b;
+  --color-mantis-800: #205b27;
+  --color-mantis-900: #1c4b23;
+  --color-mantis-950: #0a290f;
+
+  /* v3 used a fixed line-height here; v4's ratio changes inherited line-heights. */
+  --text-sm--line-height: 1.25rem;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  /* v4 preflight dropped the pointer cursor on buttons; keep v3 behavior. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.game-board {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.o-player {
+  @apply bg-neutral-700 text-white;
+}
+
+.x-player {
+  @apply bg-neutral-700 text-white;
+}
+
+.x-winner {
+  @apply bg-[#3b9aff] text-black;
+}
+
+.o-winner {
+  @apply bg-[#ff563f] text-black;
+}
 
 html {
   font-family: sohne, "Helvetica Neue", inter, -apple-system, BlinkMacSystemFont,
@@ -19,6 +91,13 @@ html {
 body {
   letter-spacing: 0.03rem;
   color: #e5e5e5;
+  animation: fade-in 0.3s ease-out both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
 }
 
 .active .nav-indicator {

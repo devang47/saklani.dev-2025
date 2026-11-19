@@ -33,7 +33,6 @@ export function scrambleAndReveal(element: HTMLElement): void {
       duration: 1,
       ease: "linear",
       onUpdate: (progress: number) => {
-        console.log(progress);
         const currentTime = Date.now();
         const revealedCount = Math.floor(progress * originalChars.length);
 

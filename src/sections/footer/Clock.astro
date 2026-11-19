@@ -26,6 +26,7 @@
     divRef.style.setProperty("--now-s", str.split(":")[2]);
   };
 
+  setTime();
   setInterval(setTime, 1000);
 </script>
 
@@ -37,7 +38,7 @@
   </div>
   <div
     id="hoverCard"
-    class="bg-neutral-900 group-hover:opacity-100 duration-100 opacity-0 absolute whitespace-nowrap top-[-35px] right-[-10px] shadow py-1 px-2 rounded-lg border border-neutral-600 text-xs text-neutral-400"
+    class="bg-neutral-900 group-hover:opacity-100 duration-100 opacity-0 absolute whitespace-nowrap top-[-35px] right-[-10px] shadow-sm py-1 px-2 rounded-lg border border-neutral-600 text-xs text-neutral-400"
   >
     <span id="currentTime"></span> IST
   </div>

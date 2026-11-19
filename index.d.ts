@@ -25,6 +25,8 @@ export interface Seo {
 export interface Image {
   alt: any;
   url: string;
+  width: number;
+  height: number;
 }
 
 export interface IProject {

@@ -30,6 +30,8 @@ query Home {
         alt
         url
         title
+        width
+        height
       }
     }
     jobExperiences {
@@ -46,6 +48,8 @@ query Home {
       image {
         alt
         url
+        width
+        height
       }
       link
       title
